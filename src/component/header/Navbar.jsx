@@ -7,45 +7,67 @@ import { FaRegHeart } from "react-icons/fa";
 import { IoBagOutline } from "react-icons/io5";
 import { IoPersonOutline } from "react-icons/io5";
 import { CiMenuFries } from "react-icons/ci";
+import UserSelection from './ui/UserSelection';
+import UserDropdown from './ui/UserDropDown';
+import ContactUS from './ui/Contact';
+import Link from 'next/link';
 function Navbar() {
     const [openSearch, setSearch] = useState(false)
+    const [openSidebar, setSideBar] = useState(false)
     const handelSearchbarOpen=()=>{
         setSearch(true)
     }
     const handelSearchbarClose=()=>{
         setSearch(false)
     }
+    const handelSideBarOpen=()=>{
+        setSideBar(true)
+    }
+    const handelSideBarClose=()=>{
+        setSideBar(false)
+        
+    }
 
   return (
     <nav className='py-7.5 bg-white'>
-     <Container>
-        <div className='flex justify-between items-center'>
+     
+        <div className='flex w-[95%] mx-auto justify-between items-center'>
             <Image src='/logo.png'width={100} height={100} alt='logo'/>
             <ul className='hidden lg:flex capitalize gap-12 items-center text-Black font-medium text-base'>
-                <li>home</li>
+                <Link href='/'>home</Link>
                 <li>shop</li>
                 <li>pages</li>
-                <li>about us</li>
-                <li>contact us</li>
+                <Link href='/about'>about us</Link>
+                <Link href='/contact'>contact us</Link>
             </ul>
             <div className='flex items-center gap-4 md:gap-6 lg:gap-8 text-[20px] lg:text-2xl '>
                 <span onClick={handelSearchbarOpen} className='hover:text-primary  cursor-pointer'><IoIosSearch /></span>
-                <span className=' relative hover:text-primary cursor-pointer'>
+                <div className='relative group'>
+                    <span className=' relative hover:text-primary cursor-pointer'>
                     <FaRegHeart />
                     <p className=' absolute  right-0 -bottom-1 w-4 h-4 rounded-full flex items-center justify-center
                             bg-primary text-white text-[8px] font-semibold  cursor-pointer'>0</p>
                 </span>
-                <span className=' relative hover:text-primary cursor-pointer'>
+                <UserSelection/> 
+                </div>
+                <div className=' relative group'>
+                    <span className='relative hover:text-primary cursor-pointer'>
                     <IoBagOutline />
                 <p className=' absolute  right-0 -bottom-1 w-4 h-4 rounded-full flex items-center justify-center
                             bg-primary text-white text-[8px] font-semibold cursor-pointer'>0</p>
                 </span>
-                <span className='hover:text-primary'><IoPersonOutline /></span>
-                <span className='hover:text-primary cursor-pointer'><CiMenuFries /></span>
+                   <UserSelection/>         
+                </div>
+                <div className='group relative'>
+                    <span className='hover:text-primary'><IoPersonOutline /></span>
+                    <UserDropdown/>
+                </div>
+                <span onClick={handelSideBarOpen} className='hover:text-primary cursor-pointer'><CiMenuFries /></span>
             </div>
         </div>
-     </Container>
+     
         <SearchBar openSearch={openSearch} handelSearchbarClose={handelSearchbarClose}/>
+        <ContactUS handelSideBarClose={handelSideBarClose} openSidebar={openSidebar}/>
     </nav>
   )
 }
