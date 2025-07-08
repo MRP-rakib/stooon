@@ -73,7 +73,7 @@ function Navbar() {
 }
 function SearchBar({openSearch,handelSearchbarClose}){
     return(
-        <div className={`bg-[rgba(0,0,0,0.20)] border w-[0] opacity-0 invisible ${openSearch && 'w-full cursor opacity-100 visible'}
+        <div className={`bg-[rgba(0,0,0,0.20)] w-[0] opacity-0 invisible ${openSearch && 'w-full cursor opacity-100 visible'}
          transition-all duration-600 h-[100%] fixed top-0 right-0`}>
             <div onClick={handelSearchbarClose} className='w-full h-full'></div>
             <form className={`flex items-center absolute top-[20%] left-[50%] -translate-[50%]`}>
