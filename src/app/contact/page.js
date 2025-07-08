@@ -1,24 +1,17 @@
-import Instagram from '@/component/Instagram'
+'use client'
+import Instagram from '@/ui/Instagram'
 import Container from '@/ui/Container'
+import PageTopSection from '@/ui/PageTopSection'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 
 export default function ContactPage() {
+  const pathName = usePathname()
   return (
     <div className="min-h-screen bg-white">
       {/* Header Section */}
-      <div className="bg-[#F79483] py-8 md:py-10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-4">
-          <h1 className="text-2xl md:text-4xl font-bold text-white tracking-wide mb-2 md:mb-0">CONTACT</h1>
-          <nav className="flex items-center flex-wrap space-x-2 text-white text-base md:text-lg">
-            <span className="hover:underline cursor-pointer">Home</span>
-            <span className="mx-1">/</span>
-            <span className="hover:underline cursor-pointer">Home</span>
-            <span className="mx-1">/</span>
-            <span className="font-semibold">Contact</span>
-          </nav>
-        </div>
-      </div>
+     <PageTopSection pageName='Contact' CurrentPageLocation={pathName}/>
       {/* Google Map Section */}
       <div className="w-full h-[300px] md:h-[70vh] bg-[#99d8e6]">
         <iframe
