@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Container from "@/ui/Container";
 import Instagram from "@/ui/Instagram";
 import PageTopSection from "@/ui/PageTopSection";
@@ -7,16 +7,27 @@ import { usePathname } from "next/navigation";
 import { CiFacebook } from "react-icons/ci";
 import { FaInstagram } from "react-icons/fa";
 import { CiTwitter } from "react-icons/ci";
+import { IoMdClose } from "react-icons/io";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 
 // import './styles.css';
-import { Pagination } from 'swiper/modules';
+import { Pagination } from "swiper/modules";
+import { useState } from "react";
 
 function Aboutpage() {
+  const [video,setVideo] = useState(false)
   const pathName = usePathname();
+  const handelVideoFrameON=()=>{
+    setVideo(true)
+    console.log(' video on');
+    
+  }
+  const handelVideoFrameOFF=()=>{
+    setVideo(false)
+  }
 
   return (
     <div>
@@ -44,24 +55,55 @@ function Aboutpage() {
               </span>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center relative ">
             <Image src="/about.png" alt="about" width={800} height={800} />
+            <div onClick={handelVideoFrameON} className=" absolute left-1/2 top-1/2 -translate-1/2 flex justify-center items-center w-20 h-20 bg-white rounded-full cursor-pointer">
+              <span class="absolute inline-flex h-full w-full rounded-full bg-white opacity-75 animate-ping -z-10"></span>
+              <div className="w-0 h-0 border-t-[12px] border-b-[12px] border-l-[12px] border-t-transparent border-b-transparent border-l-primary"></div>
+            </div>
+            
           </div>
         </div>
-      </Container>
+       </Container>
+       <VideoFrame video={video} handelVideoFrameOFF={handelVideoFrameOFF}/>
       <ProfessionalExperts />
       <Instagram />
     </div>
   );
 }
 function ProfessionalExperts() {
-	const experties = [
-		{id:1, img:'/1.png', name:'Suddenlypsychic',role:'Software developer'},
-		{id:2, img:'/2.png', name:'Suddenlypsychic',role:'Software developer'},
-		{id:3, img:'/3.png', name:'Suddenlypsychic',role:'Software developer'},
-		{id:4, img:'/4.png', name:'Suddenlypsychic',role:'Software developer'},
-		{id:5, img:'/2.png', name:'Suddenlypsychic',role:'Software developer'},
-	]
+  const experties = [
+    {
+      id: 1,
+      img: "/1.png",
+      name: "Suddenlypsychic",
+      role: "Software developer",
+    },
+    {
+      id: 2,
+      img: "/2.png",
+      name: "Suddenlypsychic",
+      role: "Software developer",
+    },
+    {
+      id: 3,
+      img: "/3.png",
+      name: "Suddenlypsychic",
+      role: "Software developer",
+    },
+    {
+      id: 4,
+      img: "/4.png",
+      name: "Suddenlypsychic",
+      role: "Software developer",
+    },
+    {
+      id: 5,
+      img: "/2.png",
+      name: "Suddenlypsychic",
+      role: "Software developer",
+    },
+  ];
   return (
     <div className="bg-[#F5F5F5] mt-5 lg:mt-10 py-5 lg:py-10">
       <Container>
@@ -81,8 +123,7 @@ function ProfessionalExperts() {
             spaceBetween={10}
             pagination={{
               clickable: true,
-              el: '.custom-pagination',
-              
+              el: ".custom-pagination",
             }}
             breakpoints={{
               640: { slidesPerView: 1, spaceBetween: 20 },
@@ -92,7 +133,7 @@ function ProfessionalExperts() {
             modules={[Pagination]}
             className="mySwiper my-5 lg:my-10"
           >
-            {experties.map(expert => (
+            {experties.map((expert) => (
               <SwiperSlide key={expert.id}>
                 <div className="flex items-center justify-center gap-1 flex-col">
                   <Image
@@ -131,7 +172,32 @@ function ProfessionalExperts() {
     </div>
   );
 }
+function VideoFrame({video,handelVideoFrameOFF}){
+  return(
+    <>
+    {video&&(
+     <div className={` z-20 flex fixed top-0 left-0 w-full h-[100vh] bg-[rgba(0,0,0,0.50)] items-center justify-center`}>
+              
+        <div className="flex flex-col items-end ">
+          <span onClick={handelVideoFrameOFF} className="text-4xl text-white cursor-pointer"><IoMdClose/></span>
+          <iframe
+              className=" w-full md:h-[300px] md:w-[500px] lg:w-[800px] lg:h-[400px] lg:aspect-video rounded-lg"
+             
+              src="https://www.youtube.com/embed/P82yV0EWqvg?si=7fjCSGvU5GWynKs2&amp;start=1"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            >
+            
+            </iframe>
+        </div>
+    </div>
+    )}</>
+    
+    
+  )
+}
 
 export default Aboutpage;
-
-
