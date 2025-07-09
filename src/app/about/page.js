@@ -15,7 +15,7 @@ import 'swiper/css/pagination';
 // import './styles.css';
 import { Pagination } from 'swiper/modules';
 
-function page() {
+function Aboutpage() {
   const pathName = usePathname();
 
   return (

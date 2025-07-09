@@ -4,7 +4,7 @@ import PageTopSection from '@/ui/PageTopSection'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 
-function page() {
+function Cartpage() {
 const pathName = usePathname()
   return (
     <div>
