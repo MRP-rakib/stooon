@@ -132,6 +132,6 @@ function ProfessionalExperts() {
   );
 }
 
-export default page;
+export default Aboutpage;
 
 

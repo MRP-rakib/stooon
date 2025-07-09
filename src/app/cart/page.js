@@ -13,4 +13,4 @@ const pathName = usePathname()
   )
 }
 
-export default page
+export default Cartpage
