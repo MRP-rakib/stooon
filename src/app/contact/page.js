@@ -54,9 +54,12 @@ export default function ContactPage() {
               <div className="text-gray-700 text-base"><span className="underline cursor-pointer">125/A, CA Commercial Area</span><br/>California, USA<br/><span className="text-xs text-gray-500">Address</span></div>
             </div>
           </div>
-          {/* Contact Form */}
+          </div>
+      </Container>
+          
           <div className="bg-[#f8f8f8] py-8 md:py-12 px-2 md:px-0">
-            <form className="max-w-4xl mx-auto space-y-6">
+            <Container>
+              <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input type="text" placeholder="Name*" className="border w-full px-4 py-3 outline-none bg-white" />
                 <input type="text" placeholder="Phone*" className="border w-full px-4 py-3 outline-none bg-white" />
@@ -70,11 +73,11 @@ export default function ContactPage() {
                 <button type="submit" className="bg-black text-white px-8 md:px-10 py-3 font-semibold tracking-wide w-full md:w-auto">SEND MESSAGE</button>
               </div>
             </form>
+            </Container>
           </div>
+          <Instagram/>
         </div>
-      </Container>
-      {/* Instagram Section */}
-      <Instagram/>
-    </div>
+      
+    
   )
 }

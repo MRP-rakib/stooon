@@ -9,7 +9,7 @@ function UserSelection() {
   
   return (
     <div className='p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300
-       group-hover:block group-hover:top-10 absolute top-20 lg:right-0 -right-15  lg:w-[500px] w-[300px] min-w-0  bg-white shadow'>
+       group-hover:block group-hover:top-10 absolute top-20 lg:right-0 -right-15 z-30  lg:w-[500px] w-[300px] min-w-0  bg-white shadow'>
      <div className=' flex flex-col gap-4'>
       <div className='flex items-center justify-between border-b border-[rgba(0,0,0,0.3)] pb-4'>
       <div className='flex items-center gap-2'>
