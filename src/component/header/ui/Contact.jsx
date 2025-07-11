@@ -6,7 +6,7 @@ import { HiOutlineLocationMarker, HiOutlineMail, HiOutlinePhone } from "react-ic
 import { FiArrowRight } from "react-icons/fi";
 import Image from 'next/image';
 import Link from 'next/link';
-function ContactUS({ handelSideBarClose, openSidebar }) {
+function SideBar({ handelSideBarClose, openSidebar }) {
   return (
     <div className={` absolute top-0 right-0 w-0 h-full bg-[rgba(0,0,0,0.20)]  transition-all duration-1000 ${openSidebar && 'w-full'}`}>
       <div className=' relative'>
@@ -14,10 +14,10 @@ function ContactUS({ handelSideBarClose, openSidebar }) {
               ${openSidebar && 'w-[50%] md:w-[300px] lg:w-[400px]'} w-0 h-[100vh] z-10 transition-all duration-1000 overflow-auto`}>
           <div className='flex justify-end '>
             <button onClick={handelSideBarClose} className='py-4 px-3 bg-red-300 hover:bg-red-500 transition-all 
-                   duration-300 text-white text-2xl'><IoMdClose /></button>
+                   duration-300 text-white text-2xl cursor-pointer'><IoMdClose /></button>
           </div>
          <Contact/>
-         <MobileMenu/>
+         <MobileMenu handelSideBarClose={handelSideBarClose}/>
         </div>
 </div>
     </div>
@@ -78,17 +78,17 @@ const Contact =()=>{
           </div>
   )
 }
-const MobileMenu=()=>{
+const MobileMenu=({handelSideBarClose})=>{
   return(
     <div className='lg:hidden block'>
       <ul className='flex flex-col px-6 capitalize gap-5 text-Black font-medium text-base'>
-                <Link href='/'>home</Link>
+                <Link onClick={handelSideBarClose} href='/'>home</Link>
                 <li>shop</li>
                 <li>pages</li>
-                <Link href='/about'>about us</Link>
-                <Link href='/contact'>contact us</Link>
+                <Link onClick={handelSideBarClose} href='/about'>about us</Link>
+                <Link onClick={handelSideBarClose} href='/contact'>contact us</Link>
             </ul>
     </div>
   )
 }
-export default ContactUS
+export default SideBar

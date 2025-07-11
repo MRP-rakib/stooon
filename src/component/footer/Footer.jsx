@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#f8f8f8] pt-12">
       <Container>
-        <div className="grid grid-cols-1 items-center md:grid-cols-4 gap-10 pb-10 border-b border-gray-200">
+        <div className="grid grid-cols-1 items-start md:grid-cols-4  gap-10 pb-10 border-b border-gray-200">
           {/* Categories */}
           <div>
             <h3 className="font-semibold mb-4 text-lg">CATEGORIES</h3>

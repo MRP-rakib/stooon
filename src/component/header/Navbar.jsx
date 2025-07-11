@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IoIosSearch } from "react-icons/io";
 import { FaRegHeart } from "react-icons/fa";
 import { IoBagOutline } from "react-icons/io5";
@@ -9,8 +9,9 @@ import { IoPersonOutline } from "react-icons/io5";
 import { CiMenuFries } from "react-icons/ci";
 import UserSelection from './ui/UserSelection';
 import UserDropdown from './ui/UserDropDown';
-import ContactUS from './ui/Contact';
+
 import Link from 'next/link';
+import SideBar from './ui/Contact';
 function Navbar() {
     const [openSearch, setSearch] = useState(false)
     const [openSidebar, setSideBar] = useState(false)
@@ -23,16 +24,21 @@ function Navbar() {
     const handelSideBarOpen=()=>{
         setSideBar(true)
     }
-    const handelSideBarClose=()=>{
-        setSideBar(false)
+ 
+const handelSideBarClose=()=>{
+     setSideBar(false)
+    
+        
         
     }
+    
+ 
 
   return (
     <nav className='py-7.5 bg-white'>
      
         <div className='flex w-[95%] mx-auto justify-between items-center'>
-            <Image src='/logo.png'width={100} height={100} alt='logo'/>
+            <Link href='/'><Image src='/logo.png'width={100} height={100} alt='logo'/></Link>
             <ul className='hidden lg:flex capitalize gap-12 items-center text-Black font-medium text-base'>
                 <Link href='/'>home</Link>
                 <li>shop</li>
@@ -48,7 +54,7 @@ function Navbar() {
                     <p className=' absolute  right-0 -bottom-1 w-4 h-4 rounded-full flex items-center justify-center
                             bg-primary text-white text-[8px] font-semibold  cursor-pointer'>0</p>
                 </span>
-                <UserSelection/> 
+                <UserSelection page='Go to Whishlist' pageLocation='/wishlist'/> 
                 </div>
                 <div className=' relative group'>
                     <span className='relative hover:text-primary cursor-pointer'>
@@ -56,18 +62,18 @@ function Navbar() {
                 <p className=' absolute  right-0 -bottom-1 w-4 h-4 rounded-full flex items-center justify-center
                             bg-primary text-white text-[8px] font-semibold cursor-pointer'>0</p>
                 </span>
-                   <UserSelection/>         
+                   <UserSelection page='Go To Cart' pageLocation='/cart'/>         
                 </div>
                 <div className='group relative'>
                     <span className='hover:text-primary'><IoPersonOutline /></span>
-                    <UserDropdown/>
+                    <UserDropdown />
                 </div>
                 <span onClick={handelSideBarOpen} className='hover:text-primary cursor-pointer'><CiMenuFries /></span>
             </div>
         </div>
      
         <SearchBar openSearch={openSearch} handelSearchbarClose={handelSearchbarClose}/>
-        <ContactUS handelSideBarClose={handelSideBarClose} openSidebar={openSidebar}/>
+        <SideBar handelSideBarClose={handelSideBarClose} openSidebar={openSidebar}/>
     </nav>
   )
 }

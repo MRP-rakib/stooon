@@ -1,11 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import React from 'react'
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 
 
-function UserSelection() {
+function UserSelection({pageLocation,page}) {
+  
   
   return (
     <div className='p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300
@@ -13,7 +15,7 @@ function UserSelection() {
      <div className=' flex flex-col gap-4'>
       <div className='flex items-center justify-between border-b border-[rgba(0,0,0,0.3)] pb-4'>
       <div className='flex items-center gap-2'>
-        <Image src={''} alt='image' width={80} height={100}/>
+        <Image src={undefined} alt='image' width={80} height={100}/>
       <p className='text-[16px] cursor-pointer'>This is product</p>
       </div>
       <div className='flex flex-col gap-2 text-[14px]'>
@@ -30,7 +32,8 @@ function UserSelection() {
       
      </div>
      <h3 className='text-[16px] py-5'>Total Price:00</h3>
-     <Link href='/cart' className='border border-[rgba(0,0,0,0.3)] px-2 py-2 text-base'>Go To Card</Link>
+     
+     <Link href={pageLocation} className='border border-[rgba(0,0,0,0.3)] px-2 py-2 text-base'>{page}</Link>
     </div>
   )
 }

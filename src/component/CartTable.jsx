@@ -1,7 +1,12 @@
+'use client'
 import React from 'react';
 import { MdModeEdit } from "react-icons/md";
 import { IoClose } from "react-icons/io5";
+import { usePathname } from 'next/navigation';
+import { MdAdd } from "react-icons/md";
+import Button from '@/ui/Button';
 const CartTable = () => {
+  const pathName = usePathname()
   return (
     <div className="overflow-x-auto">
       <table className="min-w-[700px] w-full border border-gray-300 border-collapse">
@@ -46,16 +51,21 @@ const CartTable = () => {
                   <IoClose />
                 </button>
                 {/* Edit Button */}
-                <button className="text-gray-500 w-8 h-8 rounded-full bg-white border flex items-center justify-center cursor-pointer">
+                {pathName==='/wishlist'?(<button className="text-gray-500 w-8 h-8 rounded-full bg-white border flex items-center justify-center cursor-pointer">
+                  <MdAdd />
+                 </button>):(<button className="text-gray-500 w-8 h-8 rounded-full bg-white border flex items-center justify-center cursor-pointer">
                   <MdModeEdit />
-
-                </button>
+                 </button>)}
               </div>
             </td>
           </tr>
           ))}
         </tbody>
       </table>
+      <div className='flex items-center justify-between mt-8'>
+        <Button className={'text-white bg-Black'} btnName='continue Shopping'/>
+        <Button className={'bg-transparent text-black border'} btnName='clear Shopping Cart'/>
+      </div>
     </div>
   );
 };

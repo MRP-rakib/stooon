@@ -1,6 +1,9 @@
+'use client'
+import { usePathname } from "next/navigation";
 import React from "react";
 
 function CartPrice() {
+
   return (
     <div className="bg-gray-100 p-5">
       <div className="text-base">
@@ -77,6 +80,7 @@ function CartPrice() {
           Proceed To checkbox
         </button>
       </div>
+
       <p className="text-center mb-6 mt-3">CHeckout WIth Multiple Address</p>
     </div>
   );

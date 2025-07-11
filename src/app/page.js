@@ -1,8 +1,11 @@
+import Instagram from '@/ui/Instagram'
 import React from 'react'
 
 function Home() {
   return (
-    <div className=''>page</div>
+    <div className=''>
+      <Instagram/>
+    </div>
   )
 }
 
